@@ -5,17 +5,25 @@
 <title>Document</title>
 </head>
 <body>
-        function dispalyGreetings(today)
-        {
-        hrs = today.getHours();
-        name="Keucilene"
-        if (hrs < 12)
-            greet = 'Good Morning  '+name;
-        else if (hrs >= 12 && hrs <= 17)
-            greet = 'Good Afternoon '+name;
-        else if (hrs >= 17 && hrs <= 24)
-            greet = 'Good Evening  '+name;
-        document.getElementById('greet').innerHTML = greet;
+        $(document).ready(function() {
+          function dateTime() {
+            var ndate = new Date();
+            var hours = ndate.getHours();
+            var message = hours < 12 ? 'Good Morning' : hours < 18 ? 'Good Afternoon' : 'Good Evening';
+            $("h3.day-message").text(message);
+
+            $('.date').html(hours.leadingZeroes(2) + ":" + ndate.getMinutes().leadingZeroes(2) + ":" + ndate.getSeconds().leadingZeroes(2) + (hours < 12 ? 'AM' : 'PM'));
+          }
+
+          setInterval(dateTime, 1000);
+        });
+
+        Number.prototype.leadingZeroes = function(len) {
+          return (new Array(len).fill('0', 0).join('') + this).slice(-Math.abs(len));
         }
+        
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+        <h3 class="day-message"></h3>
+        <span class="date"></span>
 </body>
 </html>
