@@ -5,25 +5,22 @@
 <title>Document</title>
 </head>
 <body>
-        $(document).ready(function() {
-          function dateTime() {
-            var ndate = new Date();
-            var hours = ndate.getHours();
-            var message = hours < 12 ? 'Good Morning' : hours < 18 ? 'Good Afternoon' : 'Good Evening';
-            $("h3.day-message").text(message);
-
-            $('.date').html(hours.leadingZeroes(2) + ":" + ndate.getMinutes().leadingZeroes(2) + ":" + ndate.getSeconds().leadingZeroes(2) + (hours < 12 ? 'AM' : 'PM'));
-          }
-
-          setInterval(dateTime, 1000);
-        });
-
-        Number.prototype.leadingZeroes = function(len) {
-          return (new Array(len).fill('0', 0).join('') + this).slice(-Math.abs(len));
+        <SCRIPT language=Javascript>
+        d = new Date();
+        hour = d.getHours();
+        if(hour < 12)
+        {
+          document.write("Bom Dia,");
         }
-        
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-        <h3 class="day-message"></h3>
-        <span class="date"></span>
+        else
+        if(hour < 18)
+        {
+          document.write("Boa Tarde,");
+        }
+        else
+        {
+          document.write("Boa Noite,");
+        }
+        </SCRIPT>
 </body>
 </html>
